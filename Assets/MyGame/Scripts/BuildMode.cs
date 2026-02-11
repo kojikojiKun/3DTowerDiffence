@@ -1,15 +1,17 @@
-using UnityEngine;
-
 public class BuildMode : IGameMode
 {
     CameraModeController m_camera;
 
-    public BuildMode (CameraModeController camera)
+    public BuildMode(CameraModeController camera)
     {
         m_camera = camera;
     }
 
-    public void Enter() { }
+    //ビルドカメラ有効.
+    public void Enter()
+    {
+        m_camera.SetBuild();
+    }
     public void Exit() { }
     public void Update() { }
 }
