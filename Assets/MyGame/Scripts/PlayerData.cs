@@ -1,19 +1,11 @@
 using UnityEngine;
 
-public enum PlayerType
+[CreateAssetMenu(menuName ="Game/Player Data")]
+public class PlayerData : ScriptableObject
 {
-    Valance,
-    Speed,
-    Power
-}
-
-public class PlayerData : MonoBehaviour
-{
-    public PlayerType Type;
-    public int Hp;
-    public float MoveSpeed;
-    public float AttackPower;
-    
-    //çUåÇë¨ìx.
-    //public float AttackSpeed;
+    public int MaxHp;
+    public float WalkSpeed;
+    public float RunSpeed;
+    public int AttackPower;
+    public float AttackRate;
 }
