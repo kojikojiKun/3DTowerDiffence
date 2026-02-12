@@ -4,13 +4,11 @@ public class PlayerCore : IDamageable
 
     public PlayerCore(PlayerStatus status)
     {
-        //プレイヤーのステータスをセットする.
         Status = status;
     }
 
     public void TakeDamage(int value)
     {
-        //ダメージを受ける.
         Status.Hp -= value;
     }
 

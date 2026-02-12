@@ -14,27 +14,23 @@ public class CameraModeController : MonoBehaviour
         m_playerInput = GetComponent<PlayerInput>();
     }
 
-    //戦闘カメラ有効.
+    /*
+     * ビルドモード、戦闘モードを切り替え.
+     * モードに応じてプレイヤー操作、カメラ操作のAcitionMapを切り替え.
+     */
     public void SetCombat()
     {
         m_combatCam.Priority = 20;
         m_buildCam.Priority = 10;
 
-        //アクションマップを切り替え.
         m_playerInput.SwitchCurrentActionMap("Player");
-
-        Debug.Log("combat mode");
     }
 
-    //ビルドモードのカメラ有効.
     public void SetBuild()
     {
         m_combatCam.Priority = 10;
         m_buildCam.Priority = 20;
 
-        //アクションマップを切り替え.
         m_playerInput.SwitchCurrentActionMap("BuildMode");
-
-        Debug.Log("build mode");
     }
 }

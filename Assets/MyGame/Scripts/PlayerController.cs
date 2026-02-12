@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //移動入力受け取り.
         m_moveInput = context.ReadValue<Vector2>();
     }
 
@@ -60,7 +59,6 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started && m_characterController.isGrounded)
         {
-            //プレイヤーをジャンプさせる.
             m_move.Jump();
         }
     }
@@ -72,12 +70,11 @@ public class PlayerController : MonoBehaviour
         m_isBuildMode = !m_isBuildMode;
 
         //直前のモードと違うモードに切り替え..
-        m_modeSystem.ChangeMode(m_isBuildMode ? m_comatMode : m_buildMode);
+        m_modeSystem.ChangeMode(m_isBuildMode ? m_buildMode : m_comatMode);
     }
 
     private void Update()
     {
-        //移動可能状態であればプレイヤーを入力に応じて移動させる.
         if (m_core.CanMove)
             m_move.Move(m_moveInput, Camera.main.transform);
     }

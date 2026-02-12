@@ -8,7 +8,6 @@ public class PlayerStatus {
     public float JumpSpeed = 5f;
     public float TurnSpeed = 10f;
 
-    //ステータスをセット.
     public PlayerStatus(PlayerData data)
     {
         MaxHp = data.MaxHp;

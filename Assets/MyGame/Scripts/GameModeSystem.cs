@@ -2,7 +2,7 @@ public class GameModeSystem
 {
     IGameMode m_currentMode;
 
-    //モード切替.
+    //プレイヤーのゲームモード切り替えボタンの入力に応じてゲームモードをトグル式で変更する.
     public void ChangeMode(IGameMode next)
     {
         m_currentMode?.Exit();

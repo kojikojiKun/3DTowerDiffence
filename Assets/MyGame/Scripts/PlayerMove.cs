@@ -13,10 +13,8 @@ public class PlayerMove
         m_status = status;
     }
 
-    //進行方向に正面を向ける.
     private void Rotate(Vector3 dir)
     {
-        //入力がなければ回転しない.
         if (dir.sqrMagnitude < 0.01f)
             return;
 
@@ -28,22 +26,19 @@ public class PlayerMove
         );
 
         if (desiredForward.sqrMagnitude > 0.01f)
-            //徐々に正面を向ける.
             m_controller.transform.rotation = Quaternion.LookRotation(desiredForward);
     }
 
-    //自由落下させる.
     private void FreeFall()
     {
         velocity_Y += GRAVITY * Time.deltaTime;
         m_controller.Move(Vector3.up * velocity_Y * Time.deltaTime);
 
-        //地面に触れていれば地面に貼り付ける.
         if (m_controller.isGrounded && velocity_Y < 0)
             velocity_Y = -2f;
     }
 
-    //カメラの方向を基準に移動させる.
+    //入力に応じてカメラの正面を基準にプレイヤーを移動させる.
     public void Move(Vector2 input, Transform cam)
     {
         Vector3 forward = cam.forward;
@@ -65,13 +60,11 @@ public class PlayerMove
         FreeFall();
     }
 
-    //移動速度を走る速度に変更する.
     public void SetRunSpeed()
     {
         m_moveSpeed = m_status.RunSpeed;
     }
 
-    //移動速度を歩く速度に変更する.
     public void SetWalkSpeed()
     {
         m_moveSpeed = m_status.WalkSpeed;
