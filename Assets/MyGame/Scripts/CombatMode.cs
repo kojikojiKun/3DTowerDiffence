@@ -1,8 +1,8 @@
 public class CombatMode : IGameMode
 {
-    CameraModeController m_camera;
+    ModeController m_camera;
 
-    public CombatMode (CameraModeController camera)
+    public CombatMode (ModeController camera)
     {
         m_camera = camera;
     }

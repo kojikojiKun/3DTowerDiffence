@@ -2,16 +2,22 @@ using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
 
-public class CameraModeController : MonoBehaviour
+public class ModeController : MonoBehaviour
 {
     [SerializeField] CinemachineBrain m_brain;
     [SerializeField] CinemachineCamera m_combatCam;
+    [SerializeField] LayerMask m_combatCamMask;
+    [SerializeField] LayerMask m_buildCamMask;
     [SerializeField] CinemachineCamera m_buildCam;
+    [SerializeField] GameObject m_combatModeUI;
+    [SerializeField] GameObject m_buildModeUI;
+    Camera m_mainCam;
     private PlayerInput m_playerInput;
 
     private void Awake()
     {
         m_playerInput = GetComponent<PlayerInput>();
+        m_mainCam = Camera.main;
     }
 
     /*
@@ -23,6 +29,12 @@ public class CameraModeController : MonoBehaviour
         m_combatCam.Priority = 20;
         m_buildCam.Priority = 10;
 
+        m_combatModeUI.SetActive(true);
+        m_buildModeUI.SetActive(false);
+
+        //CullingMaskïœçX.
+        m_mainCam.cullingMask = m_combatCamMask;
+
         m_playerInput.SwitchCurrentActionMap("Player");
     }
 
@@ -30,6 +42,12 @@ public class CameraModeController : MonoBehaviour
     {
         m_combatCam.Priority = 10;
         m_buildCam.Priority = 20;
+
+        m_combatModeUI.SetActive(false);
+        m_buildModeUI.SetActive(true);
+
+        //CullingMaskïœçX.
+        m_mainCam.cullingMask = m_buildCamMask;
 
         m_playerInput.SwitchCurrentActionMap("BuildMode");
     }

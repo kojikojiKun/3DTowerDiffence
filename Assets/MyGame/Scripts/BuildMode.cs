@@ -1,8 +1,8 @@
 public class BuildMode : IGameMode
 {
-    CameraModeController m_camera;
+    ModeController m_camera;
 
-    public BuildMode(CameraModeController camera)
+    public BuildMode(ModeController camera)
     {
         m_camera = camera;
     }
